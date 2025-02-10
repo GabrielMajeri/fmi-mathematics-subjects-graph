@@ -1,0 +1,6 @@
+# Ignore generated image files
+*.svg
+*.png
+
+# Ignore MacOS cache file
+.DS_Store

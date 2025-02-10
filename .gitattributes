@@ -1,0 +1,2 @@
+# Automatically identify text files and store them using LF as line terminator
+* text=auto eol=lf

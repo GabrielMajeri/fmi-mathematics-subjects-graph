@@ -1,0 +1,28 @@
+digraph discipline {
+    // Discipline din anul I
+    d_an1_1 [label="Algebră liniară"];
+    d_an1_2 [label="Algebră I"];
+    d_an1_3 [label="Analiză matematică I"];
+    d_an1_4 [label="Geometrie I"];
+    d_an1_5 [label="Programare procedurală"];
+    d_an1_6 [label="Limbă străină I"];
+    d_an1_7 [label="Educație fizică I și II"];
+    d_an1_8 [label="Algebră II"];
+    d_an1_9 [label="Analiză matematică II"];
+    d_an1_10 [label="Geometrie II"];
+    d_an1_11 [label="Elemente de calcul știinţific"];
+    d_an1_12 [label="Logică matematică"];
+
+    d_an2_1 [label="Algebră III"];
+
+    // Dependențe pentru disciplinele din anul 1
+    d_an1_2 -> d_an1_8;
+    d_an1_3 -> d_an1_9;
+    d_an1_4 -> d_an1_10;
+
+    d_an1_1 -> d_an1_11;
+    d_an1_3 -> d_an1_11;
+    d_an1_5 -> d_an1_11;
+
+    d_an1_8 -> d_an2_1;
+}
