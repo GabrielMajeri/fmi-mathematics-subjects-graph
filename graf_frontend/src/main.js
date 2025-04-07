@@ -1,4 +1,3 @@
-// Import sigma.js and its plugins
 import Sigma from "sigma";
 import { Graph } from "graphology";
 import EdgeCurveProgram, {
@@ -101,113 +100,114 @@ const renderer = new Sigma(graph, container, {
   },
 });
 
-// Set up search functionality
-const searchInput = document.getElementById("search-input");
-const searchSuggestions = document.getElementById("search-suggestions");
-
 // State management
 const state = { searchQuery: "" };
-
-// Feed the datalist autocomplete values
-searchSuggestions.innerHTML = graph
-  .nodes()
-  .map(
-    (node) =>
-      `<option value="${graph.getNodeAttribute(node, "label")}"></option>`
-  )
-  .join("\n");
-
-// Actions
-function setSearchQuery(query) {
-  state.searchQuery = query;
-  if (searchInput.value !== query) searchInput.value = query;
-
-  if (query) {
-    const lcQuery = query.toLowerCase();
-    const suggestions = graph
-      .nodes()
-      .map((n) => ({ id: n, label: graph.getNodeAttribute(n, "label") }))
-      .filter(({ label }) => label.toLowerCase().includes(lcQuery));
-
-    if (suggestions.length === 1 && suggestions[0].label === query) {
-      state.selectedNode = suggestions[0].id;
-      state.suggestions = undefined;
-      const nodePosition = renderer.getNodeDisplayData(state.selectedNode);
-      renderer.getCamera().animate(nodePosition, { duration: 500 });
-    } else {
-      state.selectedNode = undefined;
-      state.suggestions = new Set(suggestions.map(({ id }) => id));
-    }
-  } else {
-    state.selectedNode = undefined;
-    state.suggestions = undefined;
-  }
-  renderer.refresh({ skipIndexation: true });
-}
 
 function setHoveredNode(node) {
   if (node) {
     state.hoveredNode = node;
-    state.hoveredNeighbors = new Set(graph.neighbors(node));
+
+    const highlightNodes = new Set();
+
+    const prerequisiteNodes = new Set();
+    const prereqQueue = [node];
+
+    while (prereqQueue.length > 0) {
+      const current = prereqQueue.shift();
+      if (prerequisiteNodes.has(current)) continue;
+
+      if (current !== node) {
+        prerequisiteNodes.add(current);
+      }
+
+      graph.inboundNeighbors(current).forEach((n) => prereqQueue.push(n));
+    }
+
+    const dependentNodes = new Set();
+    const dependentQueue = [node];
+
+    while (dependentQueue.length) {
+      const current = dependentQueue.shift();
+      if (dependentNodes.has(current)) continue;
+
+      if (current !== node) {
+        dependentNodes.add(current);
+      }
+
+      graph.outboundNeighbors(current).forEach((n) => dependentQueue.push(n));
+    }
+
+    // Combine both sets
+    prerequisiteNodes.forEach((n) => highlightNodes.add(n));
+    dependentNodes.forEach((n) => highlightNodes.add(n));
+
+    state.hoveredPrereq = prerequisiteNodes;
+    state.hoveredDependents = dependentNodes;
+    state.hoveredNodes = highlightNodes;
   } else {
     state.hoveredNode = undefined;
-    state.hoveredNeighbors = undefined;
+    state.hoveredPrereq = undefined;
+    state.hoveredDependents = undefined;
+    state.hoveredNodes = undefined;
   }
   renderer.refresh({ skipIndexation: true });
 }
-
-// Event listeners
-searchInput.addEventListener("input", () =>
-  setSearchQuery(searchInput.value || "")
-);
-searchInput.addEventListener("blur", () => setSearchQuery(""));
-
 renderer.on("enterNode", ({ node }) => setHoveredNode(node));
 renderer.on("leaveNode", () => setHoveredNode(undefined));
 
-// Render settings
 renderer.setSetting("nodeReducer", (node, data) => {
   const res = { ...data };
+
   if (
-    state.hoveredNeighbors &&
-    !state.hoveredNeighbors.has(node) &&
+    state.hoveredNodes &&
+    !state.hoveredNodes.has(node) &&
     state.hoveredNode !== node
   ) {
     res.label = "";
     res.color = "#f6f6f6";
   }
-  if (state.selectedNode === node) {
+
+  if (
+    state.hoveredNodes &&
+    state.hoveredNodes.has(node) &&
+    node !== state.hoveredNode
+  ) {
     res.highlighted = true;
-  } else if (state.suggestions) {
-    if (state.suggestions.has(node)) {
-      res.forceLabel = true;
-    } else {
-      res.label = "";
-      res.color = "#f6f6f6";
-    }
+    res.size = 25;
   }
+
+  if (node === state.hoveredNode) {
+    res.highlighted = true;
+    res.size = 30;
+  }
+
   return res;
 });
 
 renderer.setSetting("edgeReducer", (edge, data) => {
   const res = { ...data };
+
+  const source = graph.source(edge);
+  const target = graph.target(edge);
+
   if (
-    state.hoveredNode &&
-    !graph
-      .extremities(edge)
-      .every(
-        (n) =>
-          n === state.hoveredNode || graph.areNeighbors(n, state.hoveredNode)
-      )
+    state.hoveredNodes &&
+    (!state.hoveredNodes.has(source) || !state.hoveredNodes.has(target)) &&
+    source !== state.hoveredNode &&
+    target !== state.hoveredNode
   ) {
     res.hidden = true;
   }
-  if (
-    state.suggestions &&
-    (!state.suggestions.has(graph.source(edge)) ||
-      !state.suggestions.has(graph.target(edge)))
-  ) {
-    res.hidden = true;
+
+  if (state.hoveredPrereq && state.hoveredPrereq.has(source)) {
+    res.color = "#FFA500";
+    res.size = 5;
   }
+
+  if (state.hoveredDependents && state.hoveredDependents.has(target)) {
+    res.color = "#32CD32";
+    res.size = 5;
+  }
+
   return res;
 });
