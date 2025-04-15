@@ -1,0 +1,509 @@
+[
+    {
+        "id": "algebra-liniara-mate",
+        "title": "Algebra liniară",
+        "description": "Studiază spații vectoriale, transformări liniare și sisteme de ecuații.",
+        "prerequisites": [],
+        "profile": "mate"
+    },
+    {
+        "id": "analiza-matematica-1-mate",
+        "title": "Analiză matematică I",
+        "description": "Studiul funcțiilor, limitelor, derivatelor și integralelor.",
+        "prerequisites": [],
+        "profile": "mate"
+    },
+    {
+        "id": "algebra-1-mate",
+        "title": "Algebra I",
+        "description": "Studiul structurilor algebrice fundamentale.",
+        "prerequisites": [],
+        "profile": "mate"
+    },
+    {
+        "id": "geometrie-1-mate",
+        "title": "Geometrie I",
+        "description": "Geometrie analitică și diferențială în plan și spațiu.",
+        "prerequisites": [],
+        "profile": "mate"
+    },
+    {
+        "id": "logica-matematica-mate",
+        "title": "Logică matematică",
+        "description": "Studiază principiile raționamentului formal și demonstrațiilor.",
+        "prerequisites": [],
+        "profile": "mate"
+    },
+    {
+        "id": "algoritmi-mate",
+        "title": "Algoritmi fundamentali",
+        "description": "Studiul algoritmilor de bază și principiilor de eficiență.",
+        "prerequisites": ["logica-matematica-mate"],
+        "profile": "mate"
+    },
+    {
+        "id": "analiza-matematica-2-mate",
+        "title": "Analiză matematică II",
+        "description": "Continuarea studiului analizei cu funcții de mai multe variabile și ecuații diferențiale.",
+        "prerequisites": ["analiza-matematica-1-mate"],
+        "profile": "mate"
+    },
+    {
+        "id": "algebra-2-mate",
+        "title": "Algebra II",
+        "description": "Aprofundarea conceptelor algebrice și teorie avansată.",
+        "prerequisites": ["algebra-1-mate"],
+        "profile": "mate"
+    },
+    {
+        "id": "geometrie-2-mate",
+        "title": "Geometrie II",
+        "description": "Studiul aprofundat al geometriei diferențiale și topologiei.",
+        "prerequisites": ["geometrie-1-mate"],
+        "profile": "mate"
+    },
+    {
+        "id": "ecuatii-diferentiale-mate",
+        "title": "Ecuații diferențiale",
+        "description": "Studiul ecuațiilor diferențiale și aplicațiilor acestora.",
+        "prerequisites": ["analiza-matematica-2-mate", "algebra-liniara-mate"],
+        "profile": "mate"
+    },
+    {
+        "id": "analiza-matematica-3-mate",
+        "title": "Analiză matematică III",
+        "description": "Aprofundarea analizei matematice avansate.",
+        "prerequisites": ["analiza-matematica-2-mate"],
+        "profile": "mate"
+    },
+    {
+        "id": "geometrie-3-mate",
+        "title": "Geometrie III",
+        "description": "Concepte avansate de geometrie.",
+        "prerequisites": ["geometrie-2-mate", "algebra-2-mate"],
+        "profile": "mate"
+    },
+    {
+        "id": "algebra-3-mate",
+        "title": "Algebra III",
+        "description": "Concepte avansate de algebră modernă și aplicații.",
+        "prerequisites": ["algebra-2-mate"],
+        "profile": "mate"
+    },
+    {
+        "id": "metode-numerice-mate",
+        "title": "Metode numerice",
+        "description": "Algoritmi pentru rezolvarea numerică a problemelor matematice.",
+        "prerequisites": ["analiza-matematica-2-mate", "algebra-liniara-mate"],
+        "profile": "mate"
+    },
+    {
+        "id": "teoria-probabilitatilor-mate",
+        "title": "Teoria probabilităților",
+        "description": "Studiul fenomenelor aleatoare și al incertitudinii.",
+        "prerequisites": ["analiza-matematica-2-mate"],
+        "profile": "mate"
+    },
+    {
+        "id": "statistica-mate",
+        "title": "Statistică matematică",
+        "description": "Metode de analiză și interpretare a datelor.",
+        "prerequisites": ["teoria-probabilitatilor-mate"],
+        "profile": "mate"
+    },
+    {
+        "id": "analiza-functionala-mate",
+        "title": "Analiză funcțională",
+        "description": "Studiul spațiilor de funcții și operatorilor.",
+        "prerequisites": ["analiza-matematica-3-mate", "algebra-liniara-mate"],
+        "profile": "mate"
+    },
+    {
+        "id": "topologie-mate",
+        "title": "Topologie",
+        "description": "Studiul proprietăților spațiilor care rămân invariante la deformări continue.",
+        "prerequisites": ["analiza-matematica-3-mate", "geometrie-2-mate"],
+        "profile": "mate"
+    },
+
+    {
+        "id": "algebra-liniara-mate-info",
+        "title": "Algebra liniară",
+        "description": "Studiază spații vectoriale, transformări liniare și sisteme de ecuații.",
+        "prerequisites": [],
+        "profile": "mate-info"
+    },
+    {
+        "id": "analiza-matematica-1-mate-info",
+        "title": "Analiză matematică I",
+        "description": "Studiul funcțiilor, limitelor, derivatelor și integralelor.",
+        "prerequisites": [],
+        "profile": "mate-info"
+    },
+    {
+        "id": "algebra-1-mate-info",
+        "title": "Algebra I",
+        "description": "Studiul structurilor algebrice fundamentale.",
+        "prerequisites": [],
+        "profile": "mate-info"
+    },
+    {
+        "id": "geometrie-1-mate-info",
+        "title": "Geometrie I",
+        "description": "Geometrie analitică și diferențială în plan și spațiu.",
+        "prerequisites": [],
+        "profile": "mate-info"
+    },
+    {
+        "id": "programare-procedurala-mate-info",
+        "title": "Programare procedurală",
+        "description": "Introducere în programare folosind paradigma procedurală.",
+        "prerequisites": [],
+        "profile": "mate-info"
+    },
+    {
+        "id": "logica-matematica-mate-info",
+        "title": "Logică matematică",
+        "description": "Studiază principiile raționamentului formal și demonstrațiilor.",
+        "prerequisites": [],
+        "profile": "mate-info"
+    },
+    {
+        "id": "structuri-de-date-mate-info",
+        "title": "Structuri de date",
+        "description": "Organizarea și manipularea eficientă a datelor.",
+        "prerequisites": ["programare-procedurala-mate-info"],
+        "profile": "mate-info"
+    },
+    {
+        "id": "analiza-matematica-2-mate-info",
+        "title": "Analiză matematică II",
+        "description": "Continuarea studiului analizei cu funcții de mai multe variabile și ecuații diferențiale.",
+        "prerequisites": ["analiza-matematica-1-mate-info"],
+        "profile": "mate-info"
+    },
+    {
+        "id": "algebra-2-mate-info",
+        "title": "Algebra II",
+        "description": "Aprofundarea conceptelor algebrice și teorie avansată.",
+        "prerequisites": ["algebra-1-mate-info"],
+        "profile": "mate-info"
+    },
+    {
+        "id": "geometrie-2-mate-info",
+        "title": "Geometrie II",
+        "description": "Studiul aprofundat al geometriei diferențiale și topologiei.",
+        "prerequisites": ["geometrie-1-mate-info"],
+        "profile": "mate-info"
+    },
+    {
+        "id": "programare-orientata-obiect-mate-info",
+        "title": "Programare orientată pe obiecte",
+        "description": "Paradigma de programare bazată pe conceptul de obiecte.",
+        "prerequisites": ["programare-procedurala-mate-info"],
+        "profile": "mate-info"
+    },
+    {
+        "id": "algoritmi-fundamentali-mate-info",
+        "title": "Algoritmi fundamentali",
+        "description": "Tehnici de proiectare și analiză a algoritmilor.",
+        "prerequisites": ["structuri-de-date-mate-info", "logica-matematica-mate-info"],
+        "profile": "mate-info"
+    },
+    {
+        "id": "baze-de-date-mate-info",
+        "title": "Baze de date",
+        "description": "Proiectarea și implementarea bazelor de date.",
+        "prerequisites": ["structuri-de-date-mate-info"],
+        "profile": "mate-info"
+    },
+    {
+        "id": "retele-calculatoare-mate-info",
+        "title": "Rețele de calculatoare",
+        "description": "Principii de funcționare și protocoale de rețea.",
+        "prerequisites": ["programare-orientata-obiect-mate-info"],
+        "profile": "mate-info"
+    },
+    {
+        "id": "inteligenta-artificiala-mate-info",
+        "title": "Inteligență artificială",
+        "description": "Algoritmi și tehnici de inteligență artificială.",
+        "prerequisites": ["algoritmi-fundamentali-mate-info", "algebra-liniara-mate-info", "analiza-matematica-2-mate-info"],
+        "profile": "mate-info"
+    },
+    {
+        "id": "sisteme-operare-mate-info",
+        "title": "Sisteme de operare",
+        "description": "Principii și implementare a sistemelor de operare.",
+        "prerequisites": ["programare-orientata-obiect-mate-info", "structuri-de-date-mate-info"],
+        "profile": "mate-info"
+    },
+    {
+        "id": "inginerie-software-mate-info",
+        "title": "Inginerie software",
+        "description": "Metodologii și tehnici de dezvoltare software.",
+        "prerequisites": ["programare-orientata-obiect-mate-info", "baze-de-date-mate-info"],
+        "profile": "mate-info"
+    },
+    {
+        "id": "elemente-calcul-stiintific-mate-info",
+        "title": "Elemente de calcul științific",
+        "description": "Metode numerice și algoritmi pentru rezolvarea problemelor științifice.",
+        "prerequisites": ["algebra-liniara-mate-info", "programare-procedurala-mate-info", "analiza-matematica-1-mate-info"],
+        "profile": "mate-info"
+    },
+
+    {
+        "id": "programare-procedurala-info",
+        "title": "Programare procedurală",
+        "description": "Introducere în programare folosind paradigma procedurală.",
+        "prerequisites": [],
+        "profile": "info"
+    },
+    {
+        "id": "arhitectura-calculatoarelor-info",
+        "title": "Arhitectura calculatoarelor",
+        "description": "Studiul componentelor hardware și principiilor de funcționare.",
+        "prerequisites": [],
+        "profile": "info"
+    },
+    {
+        "id": "matematica-discreta-info",
+        "title": "Matematică discretă",
+        "description": "Studiul structurilor matematice discrete.",
+        "prerequisites": [],
+        "profile": "info"
+    },
+    {
+        "id": "logica-computationala-info",
+        "title": "Logică computațională",
+        "description": "Principii de logică aplicată în informatică.",
+        "prerequisites": [],
+        "profile": "info"
+    },
+    {
+        "id": "structuri-de-date-info",
+        "title": "Structuri de date",
+        "description": "Organizarea și manipularea eficientă a datelor.",
+        "prerequisites": ["programare-procedurala-info"],
+        "profile": "info"
+    },
+    {
+        "id": "programare-orientata-obiect-info",
+        "title": "Programare orientată pe obiecte",
+        "description": "Paradigma de programare bazată pe conceptul de obiecte.",
+        "prerequisites": ["programare-procedurala-info"],
+        "profile": "info"
+    },
+    {
+        "id": "algoritmi-fundamentali-info",
+        "title": "Algoritmi fundamentali",
+        "description": "Tehnici de proiectare și analiză a algoritmilor.",
+        "prerequisites": ["structuri-de-date-info", "matematica-discreta-info"],
+        "profile": "info"
+    },
+    {
+        "id": "baze-de-date-info",
+        "title": "Baze de date",
+        "description": "Proiectarea și implementarea bazelor de date.",
+        "prerequisites": ["structuri-de-date-info"],
+        "profile": "info"
+    },
+    {
+        "id": "retele-calculatoare-info",
+        "title": "Rețele de calculatoare",
+        "description": "Principii de funcționare și protocoale de rețea.",
+        "prerequisites": ["arhitectura-calculatoarelor-info", "programare-orientata-obiect-info"],
+        "profile": "info"
+    },
+    {
+        "id": "sisteme-operare-info",
+        "title": "Sisteme de operare",
+        "description": "Principii și implementare a sistemelor de operare.",
+        "prerequisites": ["arhitectura-calculatoarelor-info", "programare-orientata-obiect-info"],
+        "profile": "info"
+    },
+    {
+        "id": "programare-avansata-info",
+        "title": "Programare avansată",
+        "description": "Tehnici avansate de programare și optimizare.",
+        "prerequisites": ["programare-orientata-obiect-info", "algoritmi-fundamentali-info"],
+        "profile": "info"
+    },
+    {
+        "id": "inginerie-software-info",
+        "title": "Inginerie software",
+        "description": "Metodologii și tehnici de dezvoltare software.",
+        "prerequisites": ["programare-orientata-obiect-info", "baze-de-date-info"],
+        "profile": "info"
+    },
+    {
+        "id": "inteligenta-artificiala-info",
+        "title": "Inteligență artificială",
+        "description": "Algoritmi și tehnici de inteligență artificială.",
+        "prerequisites": ["algoritmi-fundamentali-info"],
+        "profile": "info"
+    },
+    {
+        "id": "grafica-pe-calculator-info",
+        "title": "Grafică pe calculator",
+        "description": "Algoritmi și tehnici de grafică computerizată.",
+        "prerequisites": ["programare-avansata-info", "matematica-discreta-info"],
+        "profile": "info"
+    },
+    {
+        "id": "securitate-informatica-info",
+        "title": "Securitate informatică",
+        "description": "Protecția sistemelor și datelor informatice.",
+        "prerequisites": ["retele-calculatoare-info", "sisteme-operare-info"],
+        "profile": "info"
+    },
+    {
+        "id": "dezvoltare-web-info",
+        "title": "Dezvoltare web",
+        "description": "Tehnologii și framework-uri pentru dezvoltarea aplicațiilor web.",
+        "prerequisites": ["programare-avansata-info", "baze-de-date-info"],
+        "profile": "info"
+    },
+    {
+        "id": "cloud-computing-info",
+        "title": "Cloud Computing",
+        "description": "Principii și tehnologii de cloud computing.",
+        "prerequisites": ["retele-calculatoare-info", "sisteme-operare-info"],
+        "profile": "info"
+    },
+
+    {
+        "id": "analiza-matematica-1-cti",
+        "title": "Analiză matematică I",
+        "description": "Studiul funcțiilor, limitelor, derivatelor și integralelor.",
+        "prerequisites": [],
+        "profile": "cti"
+    },
+    {
+        "id": "algebra-liniara-cti",
+        "title": "Algebra liniară",
+        "description": "Studiază spații vectoriale, transformări liniare și sisteme de ecuații.",
+        "prerequisites": [],
+        "profile": "cti"
+    },
+    {
+        "id": "fizica-cti",
+        "title": "Fizică",
+        "description": "Principii fundamentale de fizică pentru inginerie.",
+        "prerequisites": [],
+        "profile": "cti"
+    },
+    {
+        "id": "programare-procedurala-cti",
+        "title": "Programare procedurală",
+        "description": "Introducere în programare folosind paradigma procedurală.",
+        "prerequisites": [],
+        "profile": "cti"
+    },
+    {
+        "id": "circuite-electronice-cti",
+        "title": "Circuite electronice",
+        "description": "Teoria și practica circuitelor electronice.",
+        "prerequisites": ["fizica-cti"],
+        "profile": "cti"
+    },
+    {
+        "id": "matematica-discreta-cti",
+        "title": "Matematică discretă",
+        "description": "Structuri matematice discrete pentru calculatoare.",
+        "prerequisites": ["algebra-liniara-cti"],
+        "profile": "cti"
+    },
+    {
+        "id": "structuri-de-date-cti",
+        "title": "Structuri de date",
+        "description": "Organizarea și manipularea eficientă a datelor.",
+        "prerequisites": ["programare-procedurala-cti"],
+        "profile": "cti"
+    },
+    {
+        "id": "arhitectura-calculatoarelor-cti",
+        "title": "Arhitectura calculatoarelor",
+        "description": "Proiectarea și implementarea sistemelor de calcul.",
+        "prerequisites": ["circuite-electronice-cti"],
+        "profile": "cti"
+    },
+    {
+        "id": "programare-orientata-obiect-cti",
+        "title": "Programare orientată pe obiecte",
+        "description": "Paradigma de programare bazată pe conceptul de obiecte.",
+        "prerequisites": ["programare-procedurala-cti"],
+        "profile": "cti"
+    },
+    {
+        "id": "probabilitati-statistica-cti",
+        "title": "Probabilități și statistică",
+        "description": "Modelarea matematică a proceselor aleatoare.",
+        "prerequisites": ["analiza-matematica-1-cti"],
+        "profile": "cti"
+    },
+    {
+        "id": "elemente-calcul-stiintific-cti",
+        "title": "Elemente de calcul științific",
+        "description": "Metode numerice și algoritmi pentru rezolvarea problemelor științifice.",
+        "prerequisites": ["analiza-matematica-1-cti", "programare-procedurala-cti"],
+        "profile": "cti"
+    },
+    {
+        "id": "sisteme-operare-cti",
+        "title": "Sisteme de operare",
+        "description": "Principii și implementare a sistemelor de operare.",
+        "prerequisites": ["arhitectura-calculatoarelor-cti", "structuri-de-date-cti"],
+        "profile": "cti"
+    },
+    {
+        "id": "retele-calculatoare-cti",
+        "title": "Rețele de calculatoare",
+        "description": "Protocoale și tehnologii de comunicație între calculatoare.",
+        "prerequisites": ["arhitectura-calculatoarelor-cti"],
+        "profile": "cti"
+    },
+    {
+        "id": "proiectare-vlsi-cti",
+        "title": "Proiectare VLSI",
+        "description": "Proiectarea circuitelor integrate la scară foarte mare.",
+        "prerequisites": ["circuite-electronice-cti", "arhitectura-calculatoarelor-cti"],
+        "profile": "cti"
+    },
+    {
+        "id": "inginerie-software-cti",
+        "title": "Inginerie software",
+        "description": "Metodologii de dezvoltare software.",
+        "prerequisites": ["programare-orientata-obiect-cti", "structuri-de-date-cti"],
+        "profile": "cti"
+    },
+    {
+        "id": "sisteme-embedded-cti",
+        "title": "Sisteme embedded",
+        "description": "Proiectarea și programarea sistemelor încorporate.",
+        "prerequisites": ["arhitectura-calculatoarelor-cti", "programare-orientata-obiect-cti"],
+        "profile": "cti"
+    },
+    {
+        "id": "procesare-semnale-cti",
+        "title": "Procesarea semnalelor",
+        "description": "Tehnici de procesare digitală a semnalelor.",
+        "prerequisites": ["probabilitati-statistica-cti", "elemente-calcul-stiintific-cti"],
+        "profile": "cti"
+    },
+    {
+        "id": "microcontrolere-cti",
+        "title": "Microcontrolere",
+        "description": "Programarea și aplicațiile microcontrolerelor.",
+        "prerequisites": ["sisteme-embedded-cti"],
+        "profile": "cti"
+    },
+    {
+        "id": "inteligenta-artificiala-cti",
+        "title": "Inteligență artificială",
+        "description": "Algoritmi și tehnici de inteligență artificială în sisteme încorporate.",
+        "prerequisites": ["procesare-semnale-cti", "structuri-de-date-cti"],
+        "profile": "cti"
+    }
+]

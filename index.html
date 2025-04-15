@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Dependency Graph</title>
+    <!-- Cytoscape.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.23.0/cytoscape.min.js"></script>
+    <!-- Optional layout extensions -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="controls">
+        <label for="profile-selector">Filter by Profile: </label>
+        <select id="profile-selector">
+            <option value="all">All Profiles</option>
+            <option value="mate">Mate</option>
+            <option value="info">Info</option>
+            <option value="mate-info">Mate-Info</option>
+            <option value="cti">CTI</option>
+        </select>
+        
+        <button id="reset-graph">Reset View</button>
+    </div>
+    
+    <div id="cy"></div>
+    
+    <div id="course-overlay" class="overlay">
+        <div class="overlay-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="overlay-title" class="course-title">Course Title</h2>
+            <div id="overlay-profile"></div>
+            <p id="overlay-description">Course description will appear here.</p>
+            
+            <div class="centered-graph-container">
+                <h3>Course Dependencies</h3>
+                <div id="dependencies-graph"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom script -->
+    <script src="script.js"></script>
+</body>
+</html>
