@@ -157,7 +157,31 @@ renderer.on("leaveNode", () => setHoveredNode(undefined));
 
 renderer.setSetting("nodeReducer", (node, data) => {
   const res = { ...data };
+  if (node === state.hoveredNode) {
+    const course = courses.find((c) => c.id === node);
+    if (course) {
+      res.label =
+        `${course.name}\n` +
+        `Anul ${course.year}, Semestrul ${course.sem}\n` +
+        `${course.optional ? "Optional" : "Mandatory"}` +
+        ` ++  descriere`;
 
+      // Style for the extended label
+      res.labelSize = 14;
+      res.labelColor = "#333";
+      res.labelBackground = "rgba(255,255,255,0.9)";
+      res.labelPadding = 5;
+      res.labelBorderRadius = 5;
+      res.labelBorderColor = "#ddd";
+      res.labelBorderSize = 1;
+    }
+  } else {
+    // Default label styling
+    res.labelSize = 12;
+    res.labelColor = "#333";
+    res.labelBackground = "rgba(255,255,255,0.7)";
+    res.labelPadding = 3;
+  }
   if (
     state.hoveredNodes &&
     !state.hoveredNodes.has(node) &&

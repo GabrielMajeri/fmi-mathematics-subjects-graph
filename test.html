@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Quick Sigma.js Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sigma.js/2.4.0/sigma.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/graphology/0.25.4/graphology.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sigma.js@2.4.0/dist/plugins/sigma.parsers.json.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sigma.js@2.4.0/dist/plugins/sigma.renderers.edgeLabels.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sigma.js@2.4.0/dist/plugins/sigma.renderers.edgeHovers.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sigma.js@2.4.0/dist/plugins/sigma.plugins.edgeCurve.min.js"></script>
+</head>
+
+<body style="background: lightgrey">
+    <div id="search-container">
+        <input id="search-input" type="text" placeholder="Search..." list="search-suggestions" />
+        <datalist id="search-suggestions"></datalist>
+    </div>
+    <div id="container" style="width: 800px; height: 600px; background: white"></div>
+
+    <script>
+
+
+        let coursesPerYear = {
+            1: 0,
+            2: 0,
+            3: 0,
+        }
+
+        // Create a graphology graph
+        const graph = new graphology.Graph();
+
+
+        for (let course of courses) {
+            console.log(course.year, yearColor[course.year])
+            coursesPerYear[course.year] += 1
+            console.log(coursesPerYear)
+            graph.addNode(course.id, {
+                label: course.name, color: yearColor[course.year][course.sem], x:
+                    coursesPerYear[course.year], y: 3 - course.year, size: 20
+            })
+        }
+
+        for (let course of courses) {
+            if (course.pre) {
+                for (let p of course.pre) {
+                    let dashed = false;
+                    if (course.optional) {
+                        dashed = true
+                    }
+                    graph.addEdge(p, course.id, { type: 'arrow', size: 5, curved: true })
+                }
+            }
+        }
+
+
+        // graph.addNode("1", { label: "Node 1", x: 0, y: 0, size: 10, color: "blue" });
+        // graph.addNode("2", { label: "Node 2", x: 1, y: 1, size: 20, color: "red" });
+        // graph.addEdge("1", "2", { size: 5, color: "purple" });
+
+        // Instantiate sigma.js and render the graph
+
+        // Apply the layout
+
+        // Type and declare internal state:
+        // interface State {
+        // hoveredNode?: string;
+        // searchQuery: string;
+
+        // // State derived from query:
+        // selectedNode?: string;
+        // suggestions?: Set<string>;
+
+        // // State derived from hovered node:
+        // hoveredNeighbors?: Set<string>;
+        // }
+        const state = { searchQuery: "" };
+        const renderer = new Sigma(graph, document.getElementById("container"));
+        Sigma.plugins.edge(renderer);
+        // Feed the datalist autocomplete values:
+        searchSuggestions.innerHTML = graph
+            .nodes()
+            .map((node) => `<option value="${graph.getNodeAttribute(node, " label")}"></option>`)
+            .join("\n");
+
+        // Actions:
+        function setSearchQuery(query) {
+            state.searchQuery = query;
+
+            if (searchInput.value !== query) searchInput.value = query;
+
+            if (query) {
+                const lcQuery = query.toLowerCase();
+                const suggestions = graph
+                    .nodes()
+                    .map((n) => ({ id: n, label: '' }))
+                    .filter(({ label }) => label.toLowerCase().includes(lcQuery));
+
+                // If we have a single perfect match, them we remove the suggestions, and
+                // we consider the user has selected a node through the datalist
+                // autocomplete:
+                if (suggestions.length === 1 && suggestions[0].label === query) {
+                    state.selectedNode = suggestions[0].id;
+                    state.suggestions = undefined;
+
+                    // Move the camera to center it on the selected node:
+                    const nodePosition = renderer.getNodeDisplayData(state.selectedNode);
+                    renderer.getCamera().animate(nodePosition, {
+                        duration: 500,
+                    });
+                }
+                // Else, we display the suggestions list:
+                else {
+                    state.selectedNode = undefined;
+                    state.suggestions = new Set(suggestions.map(({ id }) => id));
+                }
+            }
+            // If the query is empty, then we reset the selectedNode / suggestions state:
+            else {
+                state.selectedNode = undefined;
+                state.suggestions = undefined;
+            }
+
+            // Refresh rendering
+            // You can directly call `renderer.refresh()`, but if you need performances
+            // you can provide some options to the refresh method.
+            // In this case, we don't touch the graph data so we can skip its reindexation
+            renderer.refresh({
+                skipIndexation: true,
+            });
+        }
+        function setHoveredNode(node) {
+            if (node) {
+                state.hoveredNode = node;
+                state.hoveredNeighbors = new Set(graph.neighbors(node));
+            }
+
+            if (!node) {
+                state.hoveredNode = undefined;
+                state.hoveredNeighbors = undefined;
+            }
+
+            // Refresh rendering
+            renderer.refresh({
+                // We don't touch the graph data so we can skip its reindexation
+                skipIndexation: true,
+            });
+        }
+
+        // Bind search input interactions:
+        searchInput.addEventListener("input", () => {
+            setSearchQuery(searchInput.value || "");
+        });
+        searchInput.addEventListener("blur", () => {
+            setSearchQuery("");
+        });
+
+        // Bind graph interactions:
+        renderer.on("enterNode", ({ node }) => {
+            setHoveredNode(node);
+        });
+        renderer.on("leaveNode", () => {
+            setHoveredNode(undefined);
+        });
+
+        // Render nodes accordingly to the internal state:
+        // 1. If a node is selected, it is highlighted
+        // 2. If there is query, all non-matching nodes are greyed
+        // 3. If there is a hovered node, all non-neighbor nodes are greyed
+        renderer.setSetting("nodeReducer", (node, data) => {
+            const res = { ...data };
+
+            if (state.hoveredNeighbors && !state.hoveredNeighbors.has(node) && state.hoveredNode !== node) {
+                res.label = "";
+                res.color = "#f6f6f6";
+            }
+
+            if (state.selectedNode === node) {
+                res.highlighted = true;
+            } else if (state.suggestions) {
+                if (state.suggestions.has(node)) {
+                    res.forceLabel = true;
+                } else {
+                    res.label = "";
+                    res.color = "#f6f6f6";
+                }
+            }
+
+            return res;
+        });
+
+        // Render edges accordingly to the internal state:
+        // 1. If a node is hovered, the edge is hidden if it is not connected to the
+        // node
+        // 2. If there is a query, the edge is only visible if it connects two
+        // suggestions
+        renderer.setSetting("edgeReducer", (edge, data) => {
+            const res = { ...data };
+
+            if (
+                state.hoveredNode &&
+                !graph.extremities(edge).every((n) => n === state.hoveredNode || graph.areNeighbors(n, state.hoveredNode))
+            ) {
+                res.hidden = true;
+            }
+
+            if (
+                state.suggestions &&
+                (!state.suggestions.has(graph.source(edge)) || !state.suggestions.has(graph.target(edge)))
+            ) {
+                res.hidden = true;
+            }
+
+            return res;
+        });
+
+    </script>
+</body>
+
+</html>
