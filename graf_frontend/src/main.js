@@ -10,6 +10,126 @@ import {
   EdgeRectangleProgram,
 } from "sigma/rendering";
 
+import { NodeImageProgram, NodePictogramProgram } from "@sigma/node-image";
+
+function svgToDataURI(svg) {
+  const blob = new Blob([svg], { type: "image/svg+xml" });
+  return URL.createObjectURL(blob);
+}
+
+class SVGCircleGenerator {
+  constructor() {
+    this.defaultOptions = {
+      radius: 100,
+      fontSize: 16,
+      fontFamily: "Arial, sans-serif",
+      textColor: "#000000",
+      circleColor: "#ffffff",
+      strokeColor: "#000000",
+      strokeWidth: 2,
+      padding: 10,
+      lineSpacing: 1.2,
+    };
+  }
+  generateSVG(text, options = {}) {
+    const opts = { ...this.defaultOptions, ...options };
+    const {
+      radius,
+      fontSize,
+      fontFamily,
+      textColor,
+      circleColor,
+      strokeColor,
+      strokeWidth,
+      padding,
+      lineSpacing,
+    } = opts;
+
+    const svgSize = radius * 2;
+    const centerX = radius;
+    const centerY = radius;
+
+    // Wrap text to fit in circle
+    const lines = this.wrapTextInCircle(text, radius, fontSize, padding);
+
+    // Calculate text positioning
+    const lineHeight = fontSize * lineSpacing;
+    const totalTextHeight = lines.length * lineHeight;
+    const startY = centerY - totalTextHeight / 2 + fontSize / 2;
+
+    // Start building SVG
+    let svg = `<?xml version="1.0" encoding="UTF-8"?>
+<svg width="${svgSize}" height="${svgSize}" xmlns="http://www.w3.org/2000/svg">
+  <!-- Circle -->
+  <circle 
+    cx="${centerX}" 
+    cy="${centerY}" 
+    r="${radius - strokeWidth / 2}" 
+    fill="${circleColor}" 
+    stroke="${strokeColor}" 
+    stroke-width="${strokeWidth}"
+  />
+  
+  <!-- Text -->
+  <g font-family="${fontFamily}" font-size="${fontSize}" fill="${textColor}" text-anchor="middle">`;
+
+    // Add each line of text
+    lines.forEach((line, index) => {
+      const y = startY + index * lineHeight;
+      svg += `
+    <text x="${centerX}" y="${y}">${this.escapeXML(line)}</text>`;
+    });
+
+    svg += `
+  </g>
+</svg>`;
+
+    return svg;
+  }
+  escapeXML(text) {
+    return text
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&apos;");
+  }
+
+  getTextWidth(text, fontSize) {
+    return text.length * fontSize * 0.6;
+  }
+
+  wrapTextInCircle(text, radius, fontSize, padding) {
+    const words = text.split(" ");
+    const lines = [];
+    let currentLine = "";
+
+    const maxWidth = (radius - padding) * 1.4;
+
+    for (let word of words) {
+      const testLine = currentLine ? `${currentLine} ${word}` : word;
+      const testWidth = this.getTextWidth(testLine, fontSize);
+
+      if (testWidth <= maxWidth) {
+        currentLine = testLine;
+      } else {
+        if (currentLine) {
+          lines.push(currentLine);
+          currentLine = word;
+        } else {
+          lines.push(word);
+        }
+      }
+    }
+
+    if (currentLine) {
+      lines.push(currentLine);
+    }
+
+    return lines;
+  }
+}
+
 // Initialize graph
 const graph = new Graph();
 
@@ -58,14 +178,23 @@ const yearColor = {
 };
 
 // Add nodes to graph
+const generator = new SVGCircleGenerator();
+
 for (let course of courses) {
   coursesPerYear[course.year] += 1;
+
   graph.addNode(course.id, {
-    label: course.name,
-    color: yearColor[course.year][course.sem],
     x: coursesPerYear[course.year],
     y: 3 - course.year,
-    size: 20,
+    type: "image",
+    image: svgToDataURI(
+      generator.generateSVG(course.name, {
+        radius: 80,
+        textColor: "#000",
+        strokeWidth: 0,
+        circleColor: yearColor[course.year][course.sem],
+      })
+    ),
   });
 }
 
@@ -89,7 +218,6 @@ const container = document.getElementById("container");
 const renderer = new Sigma(graph, container, {
   allowInvalidContainer: true,
   defaultEdgeType: "straightNoArrow",
-  renderEdgeLabels: true,
   edgeProgramClasses: {
     straightNoArrow: EdgeRectangleProgram,
     curvedNoArrow: EdgeCurveProgram,
@@ -97,6 +225,11 @@ const renderer = new Sigma(graph, container, {
     curvedArrow: EdgeCurvedArrowProgram,
     straightDoubleArrow: EdgeDoubleArrowProgram,
     curvedDoubleArrow: EdgeCurvedDoubleArrowProgram,
+  },
+
+  nodeProgramClasses: {
+    image: NodeImageProgram,
+    pictogram: NodePictogramProgram,
   },
 });
 
@@ -157,6 +290,8 @@ renderer.on("leaveNode", () => setHoveredNode(undefined));
 
 renderer.setSetting("nodeReducer", (node, data) => {
   const res = { ...data };
+  res.size = 50;
+
   if (node === state.hoveredNode) {
     const course = courses.find((c) => c.id === node);
     if (course) {
@@ -197,12 +332,12 @@ renderer.setSetting("nodeReducer", (node, data) => {
     node !== state.hoveredNode
   ) {
     res.highlighted = true;
-    res.size = 25;
+    res.size = 50;
   }
 
   if (node === state.hoveredNode) {
     res.highlighted = true;
-    res.size = 30;
+    res.size = 60;
   }
 
   return res;
