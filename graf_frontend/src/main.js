@@ -212,6 +212,38 @@ for (let course of courses) {
   }
 }
 
+const sidebar = document.getElementById("sidebar");
+
+function updateSidebar(course) {
+  if (course) {
+    sidebar.innerHTML = `
+      <h2>${course.name}</h2>
+      <p><strong>Year:</strong> ${course.year}</p>
+      <p><strong>Semester:</strong> ${course.sem}</p>
+      <p><strong>Type:</strong> ${
+        course.optional ? "Optional" : "Mandatory"
+      }</p>
+      ${
+        course.pre
+          ? `<p><strong>Prerequisites:</strong> ${course.pre
+              .map((id) => courses.find((c) => c.id === id)?.name || id)
+              .join(", ")}</p>`
+          : ""
+      }
+      ${
+        course.description
+          ? `<p><strong>Description:</strong> ${course.description}</p>`
+          : ""
+      }
+    `;
+  } else {
+    sidebar.innerHTML = `
+      <h2>Course Information</h2>
+      <p class="placeholder">Hover over a node to see course details here.</p>
+    `;
+  }
+}
+
 // Initialize renderer
 const container = document.getElementById("container");
 
@@ -277,6 +309,10 @@ function setHoveredNode(node) {
     state.hoveredPrereq = prerequisiteNodes;
     state.hoveredDependents = dependentNodes;
     state.hoveredNodes = highlightNodes;
+
+    // Update sidebar
+    const course = courses.find((c) => c.id === node);
+    updateSidebar(course);
   } else {
     state.hoveredNode = undefined;
     state.hoveredPrereq = undefined;
@@ -294,22 +330,25 @@ renderer.setSetting("nodeReducer", (node, data) => {
 
   if (node === state.hoveredNode) {
     const course = courses.find((c) => c.id === node);
-    if (course) {
-      res.label =
-        `${course.name}\n` +
-        `Anul ${course.year}, Semestrul ${course.sem}\n` +
-        `${course.optional ? "Optional" : "Mandatory"}` +
-        ` ++  descriere`;
+    // if (course) {
+    //   // Create multi-line label with structured formatting
+    //   const yearSemLine = `📅 Year ${course.year}, Semester ${course.sem}`;
+    //   const statusLine = `${course.optional ? "🔸 Optional" : "🔶 Mandatory"}`;
+    //   const descLine = `📝 ${course.description}`;
 
-      // Style for the extended label
-      res.labelSize = 14;
-      res.labelColor = "#333";
-      res.labelBackground = "rgba(255,255,255,0.9)";
-      res.labelPadding = 5;
-      res.labelBorderRadius = 5;
-      res.labelBorderColor = "#ddd";
-      res.labelBorderSize = 1;
-    }
+    //   res.label = `${course.name}\n${yearSemLine}\n${statusLine}\n${descLine}`;
+
+    //   // Enhanced styling for expanded label
+    //   res.labelSize = 13;
+    //   res.labelColor = "#2c3e50";
+    //   res.labelBackground = "rgba(255, 255, 255, 0.95)";
+    //   res.labelPadding = 8;
+    //   res.labelBorderRadius = 6;
+    //   res.labelBorderColor = "#3498db";
+    //   res.labelBorderSize = 2;
+    //   res.labelMaxWidth = 250;
+    //   res.labelLineHeight = 1.4;
+    // }
   } else {
     // Default label styling
     res.labelSize = 12;
