@@ -409,3 +409,35 @@ renderer.setSetting("edgeReducer", (edge, data) => {
 
   return res;
 });
+
+const legend = document.createElement("div");
+legend.id = "legend";
+legend.style.position = "absolute";
+legend.style.top = "10px";
+legend.style.right = "10px";
+legend.style.background = "rgba(255, 255, 255, 0.9)";
+legend.style.border = "1px solid #ddd";
+legend.style.borderRadius = "5px";
+legend.style.padding = "10px";
+legend.style.boxShadow = "0 2px 5px rgba(0, 0, 0, 0.2)";
+legend.style.fontFamily = "Arial, sans-serif";
+legend.style.fontSize = "14px";
+
+// Build the legend content
+let legendContent = `<h3 style="margin: 0 0 10px; font-size: 16px;">Legend</h3><ul style="list-style: none; padding: 0; margin: 0;">`;
+for (const year in yearColor) {
+  for (const sem in yearColor[year]) {
+    const color = yearColor[year][sem];
+    legendContent += `
+      <li style="display: flex; align-items: center; margin-bottom: 5px;">
+        <div style="width: 20px; height: 20px; background: ${color}; margin-right: 10px; border: 1px solid #ccc;"></div>
+        Year ${year}, Semester ${sem}
+      </li>`;
+  }
+}
+legendContent += `</ul>`;
+legend.innerHTML = legendContent;
+
+// Append the legend to the container
+container.style.position = "relative"; // Ensure the container is positioned
+container.appendChild(legend);
