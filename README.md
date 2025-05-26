@@ -1,13 +1,27 @@
 # Disciplinele de la domeniul Matematică - FMI-UB
 
-Acest proiect își propune să reprezinte toate disciplinele din programele de studiu de Matematică de la Facultatea de Matematică și Informatică a Universității din București, precum și dependințele dintre ele.
+Acest proiect își propune să reprezinte toate disciplinele din programele de studiu de Matematică de la [Facultatea de Matematică și Informatică](https://fmi.unibuc.ro/) a [Universității din București](https://unibuc.ro/), precum și dependințele dintre ele.
 
-Graful disciplinelor este descris folosind limbajul [DOT](https://en.wikipedia.org/wiki/DOT_(graph_description_language)), iar imaginile/produsele finale sunt generate folosind unealta [GraphViz](https://graphviz.org/).
+Graful disciplinelor este construit folosind pachetul [Graphology](https://graphology.github.io/) iar interfața de vizualizare interactivă este realizată folosind [Sigma.js](https://www.sigmajs.org/).
 
 ## Instrucțiuni pentru contribuitori
 
-Persoanele care sunt interesate să contribuie la dezvoltarea/îmbunătățirea acestui proiect pot să reproducă varianta finală a grafului folosind script-ul `render.sh` din directorul curent:
+Acest proiect este dezvoltat în principal în [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript), utilizând framework-ul [Node.js](https://nodejs.org/en).
 
-```sh
-./render.sh
+După instalarea Node.js, poți instala package dependencies folosind comanda
+
+```shell
+npm install
+```
+
+Pentru a porni un server local de dezvoltare, se poate folosi comanda
+
+```shell
+npm run dev
+```
+
+iar pentru a compila versiunea de producție a proiectului se poate folosi
+
+```shell
+npm run build
 ```

@@ -1,0 +1,30 @@
+{
+  "name": "fmi-mathematics-subjects-graph",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Acest proiect își propune să reprezinte toate disciplinele din programele de studiu de la Facultatea de Matematică și Informatică a Universității din București, precum și dependințele dintre ele.",
+  "homepage": "https://github.com/GabrielMajeri/fmi-mathematics-subjects-graph#readme",
+  "bugs": {
+    "url": "https://github.com/GabrielMajeri/fmi-mathematics-subjects-graph/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GabrielMajeri/fmi-mathematics-subjects-graph.git"
+  },
+  "author": "",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@sigma/edge-curve": "^3.1.0",
+    "@sigma/node-image": "^3.0.0",
+    "graphology": "^0.26.0",
+    "sigma": "^3.0.1"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5"
+  }
+}
