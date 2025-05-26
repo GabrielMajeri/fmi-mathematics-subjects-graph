@@ -1,3 +1,7 @@
+// Acest fișier este scris în limbajul DOT,
+// https://graphviz.org/doc/info/lang.html
+// https://en.wikipedia.org/wiki/DOT_(graph_description_language)
+
 digraph discipline {
     // Discipline din anul I
     d_an1_1 [label="Algebră liniară"];
