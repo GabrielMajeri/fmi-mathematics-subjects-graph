@@ -1,0 +1,47 @@
+Titlul cursului,Acronim,Dependente de alte cursuri,Element cheie 1,Element cheie 2,Element cheie 3,Element cheie 4,Link fisa disciplina
+"Anul 1, Semestrul 1",,,,,,,,
+Algebra 1,MA_1_1_ALG1,Niciuna,Sisteme de ecuatii,Matrice si determinanti,Spatii vectoriale,Transformari liniare,https://cursuri.fmi.unibuc.ro/course/view.php?id=10
+"Analiza matematica 1",MA_1_1_ANM1,Niciuna,Limite si continuitate,Derivate,Integrale,Teoreme fundamentale,https://cursuri.fmi.unibuc.ro/course/view.php?id=12
+"Geometrie 1",MA_1_1_GEO1,Niciuna,Vectori,Dreapta si plan,Conice,Cuadrice,https://cursuri.fmi.unibuc.ro/course/view.php?id=14
+"Programare 1 (C)",MA_1_1_PRG1,Niciuna,Variabile si tipuri,Structuri de control,Functii,Pointeri,https://cursuri.fmi.unibuc.ro/course/view.php?id=18
+"Logica matematica",MA_1_1_LGM,Niciuna,Propozitii si predicat,Demonstratii logice,Teoria multimilor,Relatii si functii,https://cursuri.fmi.unibuc.ro/course/view.php?id=16
+"Anul 1, Semestrul 2",,,,,,,,
+"Algebra 2",MA_1_2_ALG2,MA_1_1_ALG1,Grupuri,Inele,Polinoame,Corpuri,https://cursuri.fmi.unibuc.ro/course/view.php?id=11
+"Analiza matematica 2",MA_1_2_ANM2,MA_1_1_ANM1,Serii numerice,Functii de mai multe variabile,Integrale multiple,Ecuatii diferentiale,https://cursuri.fmi.unibuc.ro/course/view.php?id=13
+"Geometrie 2",MA_1_2_GEO2,MA_1_1_GEO1,Geometrie diferentiala,Curbe si suprafete,Metrici,Transformari geometrice,https://cursuri.fmi.unibuc.ro/course/view.php?id=15
+"Structuri de date",MA_1_2_SDD,MA_1_1_PRG1,Liste,Stive si cozi,Arbori,Algoritmi de sortare,https://cursuri.fmi.unibuc.ro/course/view.php?id=22
+"Probabilitati de baza",MA_1_2_PBA,Niciuna,Evenimente aleatoare,Probabilitati conditionate,Variabile aleatoare,Distributii simple,https://cursuri.fmi.unibuc.ro/course/view.php?id=50
+"Anul 2, Semestrul 1",,,,,,,,
+"Analiza matematica 3",MA_2_1_ANM3,MA_1_2_ANM2,Spatii metrice,Integrala Lebesgue,Serii de functii,Analiza functionala,https://cursuri.fmi.unibuc.ro/course/view.php?id=23
+"Algebra liniara",MA_2_1_ALL,MA_1_1_ALG1,Forme biliniare,Forme cuadratice,Diagonalizare,Valori proprii,https://cursuri.fmi.unibuc.ro/course/view.php?id=24
+"Probabilitati si statistica",MA_2_1_PSS,"MA_1_1_ANM1, MA_1_2_PBA",Variabile aleatoare,Distributii,Teste de ipoteza,Regresie,https://cursuri.fmi.unibuc.ro/course/view.php?id=30
+"Ecuatii diferentiale",MA_2_1_ECD,MA_1_2_ANM2,Ecuatii liniare,Sisteme diferentiale,Stabilitate,Metode numerice,https://cursuri.fmi.unibuc.ro/course/view.php?id=26
+"Metode numerice",MA_2_1_MNR,MA_1_1_PRG1,Aproximare numerica,Rezolvarea ecuatiilor,Interpolare,Integrare numerica,https://cursuri.fmi.unibuc.ro/course/view.php?id=51
+"Anul 2, Semestrul 2",,,,,,,,
+"Analiza numerica",MA_2_2_ANN,"MA_1_2_ANM2, MA_2_1_MNR",Interpolare,Aproximare,Metode iterative,Erori numerice,https://cursuri.fmi.unibuc.ro/course/view.php?id=27
+"Structuri algebrice",MA_2_2_STA,MA_1_2_ALG2,Teoria Galois,Module,Algebre,Extensii de corpuri,https://cursuri.fmi.unibuc.ro/course/view.php?id=15
+"Modelare matematica 1",MA_2_2_MDM_1,MA_2_1_ECD,Modele fizice,Modele economice,Simulari simple,Optimizare de baza,https://cursuri.fmi.unibuc.ro/course/view.php?id=52
+"Programare orientata pe obiecte",MA_2_2_POO,MA_1_1_PRG1,Clase si obiecte,Mostenire,Polimorfism,Encapsulare,https://cursuri.fmi.unibuc.ro/course/view.php?id=20
+"Statistica aplicata",MA_2_2_SSA,MA_2_1_PSS,Analiza datelor,Teste statistice,Regresie multipla,Interpretare rezultate,https://cursuri.fmi.unibuc.ro/course/view.php?id=53
+"Anul 3, Semestrul 1 (Modul: Modelare matematica)",,,,,,,,
+"Analiza complexa",MA_MM_3_1_ANC,MA_2_1_ANM3,Functii analitice,Integrale complexe,Teorema reziduurilor,Transformari conforme,https://cursuri.fmi.unibuc.ro/course/view.php?id=31
+"Modelare matematica 2",MA_MM_3_1_MDM_2,MA_2_2_MDM_1,Modele dinamice,Sisteme neliniare,Simulari avansate,Aplicatii tehnice,https://cursuri.fmi.unibuc.ro/course/view.php?id=54
+"Mecanica teoretica",MA_MM_3_1_MCT,MA_2_1_ECD,Legile miscarii,Sisteme lagrangiene,Oscilatii,Stabilitate mecanica,https://cursuri.fmi.unibuc.ro/course/view.php?id=55
+"Matematica computationala",MA_MM_3_1_MTC,MA_2_2_ANN,Algoritmi numerici,Simulari computationale,Programare matematica,Erori si stabilitate,https://cursuri.fmi.unibuc.ro/course/view.php?id=37
+Optimizare,MA_MM_3_1_OPT,MA_2_1_ALL,Programare liniara,Metode gradient,Optimizare neliniara,Aplicatii practice,https://cursuri.fmi.unibuc.ro/course/view.php?id=56
+"Anul 3, Semestrul 1 (Modul: Probabilitati-Statistica)",,,,,,,,
+"Analiza complexa",MA_PS_3_1_ANC,MA_2_1_ANM3,Functii analitice,Integrale complexe,Teorema reziduurilor,Transformari conforme,https://cursuri.fmi.unibuc.ro/course/view.php?id=31
+"Statistica matematica",MA_PS_3_1_STM,MA_2_1_PSS,Estimatori,Teoria probabilitatilor,Teste avansate,Distributii multivariate,https://cursuri.fmi.unibuc.ro/course/view.php?id=57
+"Procese stocastice",MA_PS_3_1_PST,MA_2_1_PSS,Lanturi Markov,Miscare browniana,Procese Poisson,Aplicatii financiare,https://cursuri.fmi.unibuc.ro/course/view.php?id=58
+"Matematica computationala",MA_PS_3_1_MTC_1,MA_2_2_ANN,Algoritmi numerici,Simulari computationale,Programare matematica,Erori si stabilitate,https://cursuri.fmi.unibuc.ro/course/view.php?id=37
+Optimizare,MA_PS_3_1_OPT_1,MA_2_1_ALL,Programare liniara,Metode gradient,Optimizare neliniara,Aplicatii practice,https://cursuri.fmi.unibuc.ro/course/view.php?id=56
+"Anul 3, Semestrul 2 (Modul: Modelare matematica)",,,,,,,,
+"Analiza functionala",MA_MM_3_2_ANF,MA_2_1_ANM3,Spatii Banach,Spatii Hilbert,Operatori,Teorema Hahn-Banach,https://cursuri.fmi.unibuc.ro/course/view.php?id=35
+"Modelare matematica 3",MA_MM_3_2_MDM_3,MA_MM_3_1_MDM_2,Modele complexe,Simulari numerice,Aplicatii interdisciplinare,Validare modele,https://cursuri.fmi.unibuc.ro/course/view.php?id=59
+"Metode avansate de optimizare",MA_MM_3_2_MAO,MA_MM_3_1_OPT,Algoritmi genetici,Optimizare combinatorie,Metode stocastice,Aplicatii ingineresti,https://cursuri.fmi.unibuc.ro/course/view.php?id=60
+Practica,MA_MM_3_2_PRC,"MA_MM_3_1_MDM_2, MA_MM_3_1_MCT, MA_MM_3_1_OPT",Aplicarea cunostintelor,Proiect individual,Analiza de date,Prezentare rezultate,https://cursuri.fmi.unibuc.ro/course/view.php?id=38
+"Anul 3, Semestrul 2 (Modul: Probabilitati-Statistica)",,,,,,,,
+"Analiza functionala",MA_PS_3_2_ANF,MA_2_1_ANM3,Spatii Banach,Spatii Hilbert,Operatori,Teorema Hahn-Banach,https://cursuri.fmi.unibuc.ro/course/view.php?id=35
+"Statistica computationala",MA_PS_3_2_STC,MA_2_2_SSA,Analiza datelor mari,Simulari Monte Carlo,Software statistic,Interpretare avansata,https://cursuri.fmi.unibuc.ro/course/view.php?id=61
+"Modelare stocastica",MA_PS_3_2_MDS,MA_PS_3_1_PST,Modele financiare,Simulari stocastice,Aplicatii economice,Validare modele,https://cursuri.fmi.unibuc.ro/course/view.php?id=62
+Practica,MA_PS_3_2_PRC_1,"MA_PS_3_1_STM, MA_PS_3_1_PST",Aplicarea cunostintelor,Proiect individual,Analiza de date,Prezentare rezultate,https://cursuri.fmi.unibuc.ro/course/view.php?id=38
