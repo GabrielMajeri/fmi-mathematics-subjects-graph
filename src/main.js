@@ -1718,7 +1718,7 @@ container.appendChild(legend);
 
 const specializari = Array.from(new Set(courses.map((c) => c.specialization)));
 const pickerWrapper = document.createElement("div");
-pickerWrapper.style.position = "fixed";
+pickerWrapper.style.position = "absolute";
 pickerWrapper.style.top = "10px";
 pickerWrapper.style.left = "50%";
 pickerWrapper.style.transform = "translateX(-50%)";
@@ -1739,7 +1739,7 @@ specializari.forEach((spec) => {
   select.appendChild(opt);
 });
 pickerWrapper.appendChild(select);
-document.body.appendChild(pickerWrapper);
+container.appendChild(pickerWrapper);
 
 function renderGraphForSpecialization(spec) {
   graph.clear();
