@@ -43,6 +43,8 @@ class SVGCircleGenerator {
       strokeWidth,
       padding,
       lineSpacing,
+      zigzagBorder = false,
+      backgroundColor = "#fff", // <-- adaugă aici!
     } = opts;
 
     const svgSize = radius * 2;
@@ -60,20 +62,38 @@ class SVGCircleGenerator {
     // Start building SVG
     let svg = `<?xml version="1.0" encoding="UTF-8"?>
 <svg width="${svgSize}" height="${svgSize}" xmlns="http://www.w3.org/2000/svg">
-  <!-- Circle -->
-  <circle
-    cx="${centerX}"
-    cy="${centerY}"
-    r="${radius - strokeWidth / 2}"
-    fill="${circleColor}"
-    stroke="${strokeColor}"
-    stroke-width="${strokeWidth}"
-  />
+  <rect width="100%" height="100%" fill="${backgroundColor || '#fff'}"/>
+`;
 
-  <!-- Text -->
+    // Zigzag border
+    if (zigzagBorder) {
+      const points = [];
+        const spikes = 18; // mai puține spikes = mai ascuțite
+      const zigzagDepth = 10; // mai mare = spikes mai lungi
+      const baseR = radius - strokeWidth / 2 - zigzagDepth;
+      for (let i = 0; i < spikes * 2; i++) {
+        const angle = (Math.PI * i) / spikes;
+        const r = i % 2 === 0 ? baseR + zigzagDepth : baseR - zigzagDepth * 0.4; // vârf ascuțit și bază mai mică
+        const x = centerX + r * Math.cos(angle);
+        const y = centerY + r * Math.sin(angle);
+        points.push(`${x},${y}`);
+      }
+      svg += `<polygon points="${points.join(" ")}" fill="${circleColor}" stroke="${strokeColor}" stroke-width="${strokeWidth}" />\n`;
+    } else {
+      svg += `<circle
+      cx="${centerX}"
+      cy="${centerY}"
+      r="${radius - strokeWidth / 2}"
+      fill="${circleColor}"
+      stroke="${strokeColor}"
+      stroke-width="${strokeWidth}"
+    />\n`;
+    }
+
+    // Text
+    svg += `
   <g font-family="${fontFamily}" font-size="${fontSize}" fill="${textColor}" text-anchor="middle">`;
 
-    // Add each line of text
     lines.forEach((line, index) => {
       const y = startY + index * lineHeight;
       svg += `
@@ -1424,6 +1444,7 @@ const courses = [
     id: "mi_3_2_sci",
     year: 3,
     sem: 2,
+    optional: true,
     specialization: "mate_info",
     pre: ["mi_2_2_rdc"],
     keywords: [
@@ -1723,16 +1744,20 @@ function renderGraphForSpecialization(spec) {
   let coursesPerYear = { 1: 0, 2: 0, 3: 0 };
   for (let course of courses.filter((c) => c.specialization === spec)) {
     coursesPerYear[course.year] += 1;
+    const isOptional = course.optional === true;
+    const baseColor = yearColor[course.year][course.sem];
     graph.addNode(course.id, {
-      x: coursesPerYear[course.year] *0.3,
-      y: (3 - course.year)*0.3,
+      x: coursesPerYear[course.year] * 0.3,
+      y: (3 - course.year) * 0.3,
       type: "image",
       image: svgToDataURI(
         generator.generateSVG(course.name, {
           radius: 95,
           textColor: "#000",
-          strokeWidth: 0,
-          circleColor: yearColor[course.year][course.sem],
+          strokeWidth: isOptional ? 6 : 0,
+          strokeColor: isOptional ? baseColor : "#000",
+          circleColor: isOptional ? baseColor + "33" : baseColor, // "33" = 20% opacitate
+          zigzagBorder: isOptional,
         })
       ),
     });
