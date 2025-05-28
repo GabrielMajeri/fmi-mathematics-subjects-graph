@@ -1493,14 +1493,14 @@ function updateSidebar(course) {
     sidebar.innerHTML = `
       <h2 style="margin-bottom: 12px;">${course.name}</h2>
       <div style="line-height: 1.7;">
-        <p><strong>Year:</strong> ${course.year}</p>
-        <p><strong>Semester:</strong> ${course.sem}</p>
-        <p><strong>Type:</strong> ${
-          course.optional ? "Optional" : "Mandatory"
+        <p><strong>An:</strong> ${course.year}</p>
+        <p><strong>Semestru:</strong> ${course.sem}</p>
+        <p><strong>Tip:</strong> ${
+          course.optional ? "Opțională" : "Obligatorie"
         }</p>
         ${
           course.pre
-            ? `<p><strong>Prerequisites:</strong> ${course.pre
+            ? `<p><strong>Preliminare:</strong> ${course.pre
                 .map((id) => courses.find((c) => c.id === id)?.name || id)
                 .join(", ")}</p>`
             : ""
