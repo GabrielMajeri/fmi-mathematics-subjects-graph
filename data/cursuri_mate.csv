@@ -1,0 +1,32 @@
+Titlul cursului,Acronim,Dependente de alte cursuri,Element cheie 1,Element cheie 2,Element cheie 3,Element cheie 4,Link fisa disciplina
+"Anul 1, Semestrul 1",,,,,,,,
+Algebra 1,1_1_ALG1,Niciuna,Sisteme de ecuatii,Matrice si determinanti,Spatii vectoriale,Transformari liniare,https://cursuri.fmi.unibuc.ro/course/view.php?id=10
+"Analiza matematica 1",1_1_ANM1,Niciuna,Limite si continuitate,Derivate,Integrale,Teoreme fundamentale,https://cursuri.fmi.unibuc.ro/course/view.php?id=12
+"Geometrie 1",1_1_GEO1,Niciuna,Vectori,Dreapta si plan,Conice,Cuadrice,https://cursuri.fmi.unibuc.ro/course/view.php?id=14
+"Programare 1 (C)",1_1_PRG1,Niciuna,Variabile si tipuri,Structuri de control,Functii,Pointeri,https://cursuri.fmi.unibuc.ro/course/view.php?id=18
+"Logica matematica",1_1_LGM,Niciuna,Propozitii si predicat,Demonstratii logice,Teoria multimilor,Relatii si functii,https://cursuri.fmi.unibuc.ro/course/view.php?id=16
+"Anul 1, Semestrul 2",,,,,,,,
+"Algebra 2",1_2_ALG_2,1_1_ALG1,Grupuri,Inele,Polinoame,Corpuri,https://cursuri.fmi.unibuc.ro/course/view.php?id=11
+"Analiza matematica 2",1_2_ANM_2,1_1_ANM1,Serii numerice,Functii de mai multe variabile,Integrale multiple,Ecuatii diferentiale,https://cursuri.fmi.unibuc.ro/course/view.php?id=13
+"Geometrie 2",1_2_GEO_2,1_1_GEO1,Geometrie diferentiala,Curbe si suprafete,Metrici,Transformari geometrice,https://cursuri.fmi.unibuc.ro/course/view.php?id=15
+"Structuri de date",1_2_SDD,1_1_PRG1,Liste,Stive si cozi,Arbori,Algoritmi de sortare,https://cursuri.fmi.unibuc.ro/course/view.php?id=22
+"Anul 2, Semestrul 1",,,,,,,,
+"Analiza matematica 3",MT_2_1_ANM_3,1_2_ANM_2,Spatii metrice,Integrala Lebesgue,Serii de functii,Analiza functionala,https://cursuri.fmi.unibuc.ro/course/view.php?id=23
+"Algebra liniara",MT_2_1_ALL,1_1_ALG1,Forme biliniare,Forme cuadratice,Diagonalizare,Valori proprii,https://cursuri.fmi.unibuc.ro/course/view.php?id=24
+"Probabilitati si statistica",MT_2_1_PSS,1_1_ANM1,Variabile aleatoare,Distributii,Teste de ipoteza,Regresie,https://cursuri.fmi.unibuc.ro/course/view.php?id=30
+"Ecuatii diferentiale",MT_2_1_ECD,1_2_ANM_2,Ecuatii liniare,Sisteme diferentiale,Stabilitate,Metode numerice,https://cursuri.fmi.unibuc.ro/course/view.php?id=26
+"Anul 2, Semestrul 2",,,,,,,,
+"Analiza numerica",MT_2_2_ANN,1_2_ANM_2,Interpolare,Aproximare,Metode iterative,Erori numerice,https://cursuri.fmi.unibuc.ro/course/view.php?id=27
+"Structuri algebrice",MT_2_2_STA,1_2_ALG_2,Teoria Galois,Module,Algebre,Extensii de corpuri,https://cursuri.fmi.unibuc.ro/course/view.php?id=15
+"Geometrie diferentiala",MT_2_2_GMD,1_2_GEO_2,Varietati,Tensoare,Curbura,Aplicatii geometrice,https://cursuri.fmi.unibuc.ro/course/view.php?id=28
+"Programare orientata pe obiecte",MT_2_2_POO,1_1_PRG1,Clase si obiecte,Mostenire,Polimorfism,Encapsulare,https://cursuri.fmi.unibuc.ro/course/view.php?id=20
+"Anul 3, Semestrul 1",,,,,,,,
+"Analiza complexa",MT_3_1_ANC,MT_2_1_ANM_3,Functii analitice,Integrale complexe,Teorema reziduurilor,Transformari conforme,https://cursuri.fmi.unibuc.ro/course/view.php?id=31
+Topologie,MT_3_1_TOP,MT_2_1_ANM_3,Spatii topologice,Conexitate,Compactitate,Omotopie,https://cursuri.fmi.unibuc.ro/course/view.php?id=32
+"Teoria numerelor",MT_3_1_TNR,1_2_ALG_2,Numere prime,Congruente,Functii aritmetice,Ecuatii diofantiene,https://cursuri.fmi.unibuc.ro/course/view.php?id=33
+"Modele matematice",MT_3_1_MMT,MT_2_1_ECD,Modelare fizica,Modelare biologica,Simulari,Optimizare,https://cursuri.fmi.unibuc.ro/course/view.php?id=34
+"Anul 3, Semestrul 2",,,,,,,,
+"Analiza functionala",MT_3_2_ANF,MT_2_1_ANM_3,Spatii Banach,Spatii Hilbert,Operatori,Teorema Hahn-Banach,https://cursuri.fmi.unibuc.ro/course/view.php?id=35
+"Geometrie algebrica",MT_3_2_GMA,MT_2_2_STA,Varietati algebrice,Inele de polinoame,Curbe algebrice,Singularitati,https://cursuri.fmi.unibuc.ro/course/view.php?id=36
+"Matematica computationala",MT_3_2_MTC,MT_2_2_ANN,Algoritmi numerici,Simulari computationale,Programare matematica,Erori si stabilitate,https://cursuri.fmi.unibuc.ro/course/view.php?id=37
+Practica,MT_3_2_PRC,"MT_3_1_MMT, MT_3_2_MTC",Aplicarea cunostintelor,Proiect individual,Analiza de date,Prezentare rezultate,https://cursuri.fmi.unibuc.ro/course/view.php?id=38
