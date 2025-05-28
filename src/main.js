@@ -1451,15 +1451,14 @@ const yearColor = {
   },
 };
 
-// Add nodes to graph
 const generator = new SVGCircleGenerator();
 
 for (let course of courses) {
   coursesPerYear[course.year] += 1;
 
   graph.addNode(course.id, {
-    x: coursesPerYear[course.year] * 10,
-    y: (3 - course.year) * 100,
+    x: coursesPerYear[course.year] * 3,
+    y: (3 - course.year) * 3,
     type: "image",
     image: svgToDataURI(
       generator.generateSVG(course.name, {
@@ -1472,7 +1471,6 @@ for (let course of courses) {
   });
 }
 
-// Add edges to graph
 for (let course of courses) {
   if (course.pre) {
     for (let p of course.pre) {
@@ -1578,7 +1576,6 @@ function setHoveredNode(node) {
       graph.outboundNeighbors(current).forEach((n) => dependentQueue.push(n));
     }
 
-    // Combine both sets
     prerequisiteNodes.forEach((n) => highlightNodes.add(n));
     dependentNodes.forEach((n) => highlightNodes.add(n));
 
@@ -1586,7 +1583,6 @@ function setHoveredNode(node) {
     state.hoveredDependents = dependentNodes;
     state.hoveredNodes = highlightNodes;
 
-    // Update sidebar
     const course = courses.find((c) => c.id === node);
     updateSidebar(course);
   } else {
@@ -1605,38 +1601,19 @@ renderer.setSetting("nodeReducer", (node, data) => {
   res.size = 50;
 
   if (node === state.hoveredNode) {
-    const course = courses.find((c) => c.id === node);
-    // if (course) {
-    //   // Create multi-line label with structured formatting
-    //   const yearSemLine = `📅 Year ${course.year}, Semester ${course.sem}`;
-    //   const statusLine = `${course.optional ? "🔸 Optional" : "🔶 Mandatory"}`;
-    //   const descLine = `📝 ${course.description}`;
-
-    //   res.label = `${course.name}\n${yearSemLine}\n${statusLine}\n${descLine}`;
-
-    //   // Enhanced styling for expanded label
-    //   res.labelSize = 13;
-    //   res.labelColor = "#2c3e50";
-    //   res.labelBackground = "rgba(255, 255, 255, 0.95)";
-    //   res.labelPadding = 8;
-    //   res.labelBorderRadius = 6;
-    //   res.labelBorderColor = "#3498db";
-    //   res.labelBorderSize = 2;
-    //   res.labelMaxWidth = 250;
-    //   res.labelLineHeight = 1.4;
-    // }
   } else {
-    // Default label styling
     res.labelSize = 12;
     res.labelColor = "#333";
     res.labelBackground = "rgba(255,255,255,0.7)";
     res.labelPadding = 3;
   }
+
   if (
     state.hoveredNodes &&
     !state.hoveredNodes.has(node) &&
     state.hoveredNode !== node
   ) {
+    res.hidden = true; 
     res.label = "";
     res.color = "#f6f6f6";
   }
@@ -1747,8 +1724,8 @@ function renderGraphForSpecialization(spec) {
   for (let course of courses.filter((c) => c.specialization === spec)) {
     coursesPerYear[course.year] += 1;
     graph.addNode(course.id, {
-      x: coursesPerYear[course.year] * 0.8,
-      y: 3 - course.year,
+      x: coursesPerYear[course.year] *0.3,
+      y: (3 - course.year)*0.3,
       type: "image",
       image: svgToDataURI(
         generator.generateSVG(course.name, {
